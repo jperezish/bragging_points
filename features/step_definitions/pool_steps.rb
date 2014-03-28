@@ -6,7 +6,7 @@ When(/^I go to the running pools display page$/) do
 end
 
 Then(/^I should see that there are no pools running$/) do
-  page.should have_content("There are no pools running today.")
+  page.should have_content("There are no pools running today")
 end
 
 Given(/^there are some pools running today$/) do
