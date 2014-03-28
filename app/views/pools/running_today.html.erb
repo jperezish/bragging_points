@@ -1,20 +1,27 @@
-There are no pools running today
+<div data-alert class="alert-box radius">
+  There are no pools running today
+</div>
 
-<section class="pools active">
+<section class="pools active panel">
   <header>
-    <h2>Active</h2>
+    <h2 class="subheader">Active</h2>
+    <hr>
   </header>
   <ul>
-    <li class="pool">The Elite Survivor Pool</li>
+    <% @pools.active do |pool| %>
+      <li class="pool"><%= pool.name %></li>
+    <% end %>
   </ul>
 </section>
 
-<section class="pools not_started">
+<section class="pools not_started panel">
   <header>
-    <h2>Not Started</h2>
+    <h2 class="subheader">Not Started</h2>
+    <hr>
   </header>
   <ul>
-    <li class="pool">Work Survivor Pool</li>
-    <li class="pool">Family Survivor Pool</li>
+    <% @pools.not_started do |pool| %>
+      <li class="pool"><%= pool.name %></li>
+    <% end %>
   </ul>
 </section>

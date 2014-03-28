@@ -1,7 +1,6 @@
 Given(/^there are no pools running today$/) do
 end
 
-Pool = Struct.new :status, :name
 Given(/^there are some pools running today$/) do
   @pools = [
     Pool.new("not_started", "Work Survivor Pool"),
