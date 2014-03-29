@@ -9,11 +9,15 @@ module BraggingPoints
         def initialize(pools)
           @pools = pools
         end
-        def not_started(&block)
-          self.pools.select{ |p| p.status == "not_started" }.each(&block)
+
+        ["not_started", "active"].each do |status|
+          define_method status do |&block|
+            in_status(status, &block)
+          end
         end
-        def active(&block)
-          self.pools.select{ |p| p.status == "active" }.each(&block)
+
+        def in_status(status, &block)
+          self.pools.select{ |p| p.status == status }.each(&block)
         end
       end
     end
