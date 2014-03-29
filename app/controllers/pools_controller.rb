@@ -1,3 +1,4 @@
+require 'pools/presenters/collection'
 Pool = Struct.new :status, :name
 
 class PoolsController < ApplicationController
