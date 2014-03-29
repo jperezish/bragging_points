@@ -1,11 +1,12 @@
 Given(/^there are no pools running today$/) do
+  Pool.destroy_all
 end
 
 Given(/^there are some pools running today$/) do
   @pools = [
-    Pool.new("not_started", "Work Survivor Pool"),
-    Pool.new("not_started", "Family Survivor Pool"),
-    Pool.new("active", "The Elite Survivor Pool")
+    Pool.create!(status: "not_started", name: "Work Survivor Pool"),
+    Pool.create!(status: "not_started", name: "Family Survivor Pool"),
+    Pool.create!(status: "active", name: "The Elite Survivor Pool")
   ]
 end
 
