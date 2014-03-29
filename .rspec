@@ -1,2 +1,3 @@
 --color
 -I app/bragging_points
+-I app/models
