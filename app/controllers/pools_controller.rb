@@ -8,6 +8,6 @@ class PoolsController < ApplicationController
         Pool.new("not_started", "Family Survivor Pool"),
         Pool.new("active", "The Elite Survivor Pool")
       ]
-    @pools = BraggingPoints::Pools::Presenters::Collection.for(pools)
+    @pools = BraggingPoints::Pools.running_today
   end
 end
