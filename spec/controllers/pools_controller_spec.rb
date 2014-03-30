@@ -21,9 +21,8 @@ describe PoolsController do
   end
 
   describe "PUT /update_status" do
-    let(:status_updater) { double(update_to: nil) }
     before do
-      stub_const("BraggingPoints::Pools::Status", status_updater)
+      BraggingPoints::Pools::Status.stub(:update_to)
     end
 
     it "redirects back to the edit status page" do
@@ -32,7 +31,7 @@ describe PoolsController do
     end
 
     it "updates the status of the pool" do
-      status_updater.should_receive(:update_to).with("5", "active")
+      BraggingPoints::Pools::Status.should_receive(:update_to).with("5", "active")
       put :update_status, id: "5", new_status: "active"
     end
   end
