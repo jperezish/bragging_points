@@ -1,4 +1,5 @@
-require "pools"
+require 'pools'
+require 'pools/status'
 
 class PoolsController < ApplicationController
   def running_today
