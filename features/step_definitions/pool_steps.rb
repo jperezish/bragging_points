@@ -10,8 +10,17 @@ Given(/^there are some pools running today$/) do
   ]
 end
 
+Given(/^a pool that has not started$/) do
+  @pool = Pool.create! status: "not_started", name: "Awesome Friends Survivor Pool"
+end
+
 When(/^I go to the running pools display page$/) do
   visit running_today_pools_url
+end
+
+When(/^I go to the pool$/) do
+  visit edit_status_pool_url(@pool)
+  click_on "Activate Pool"
 end
 
 Then(/^I should see that there are no pools running$/) do
@@ -24,4 +33,8 @@ Then(/^I should see the running pools grouped by status$/) do
       page.should have_css(".pool", text: pool.name)
     end
   end
+end
+
+Then(/^I should see that the pool is active$/) do
+  page.should have_css(".active .pool", text: @pool.name)
 end
