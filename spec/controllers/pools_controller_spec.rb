@@ -10,4 +10,13 @@ describe PoolsController do
       expect(assigns(:pools)).to be(pools_presenter)
     end
   end
+
+  describe "GET /edit_status" do
+    it "assigns the pool" do
+      pool = double
+      ::Pool.stub(:find).with("5") { pool }
+      get :edit_status, id: "5"
+      expect(assigns(:pool)).to be (pool)
+    end
+  end
 end
