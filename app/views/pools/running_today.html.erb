@@ -25,3 +25,15 @@
     <% end %>
   </ul>
 </section>
+
+<section class="pools complete panel">
+  <header>
+    <h2 class="subheader">Completed</h2>
+    <hr>
+  </header>
+  <ul>
+    <% @pools.complete do |pool| %>
+      <li class="pool"><%= pool.name %></li>
+    <% end %>
+  </ul>
+</section>

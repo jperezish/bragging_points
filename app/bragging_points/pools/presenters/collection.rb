@@ -10,7 +10,7 @@ module BraggingPoints
           @pools = pools
         end
 
-        ["not_started", "active"].each do |status|
+        ["not_started", "active", "complete"].each do |status|
           define_method status do |&block|
             in_status(status, &block)
           end

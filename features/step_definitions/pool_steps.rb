@@ -14,6 +14,10 @@ Given(/^a pool that has not started$/) do
   @pool = Pool.create! status: "not_started", name: "Awesome Friends Survivor Pool"
 end
 
+Given(/^a pool that is active$/) do
+  @pool = Pool.create! status: "active", name: "Crazy Badger Pool"
+end
+
 When(/^I go to the running pools display page$/) do
   visit running_today_pools_url
 end
@@ -21,6 +25,11 @@ end
 When(/^I go to the pool$/) do
   visit edit_status_pool_url(@pool)
   click_on "Activate Pool"
+end
+
+When(/^the pool is complete$/) do
+  visit edit_status_pool_url(@pool)
+  click_on "Complete Pool"
 end
 
 Then(/^I should see that there are no pools running$/) do
@@ -37,4 +46,8 @@ end
 
 Then(/^I should see that the pool is active$/) do
   page.should have_css(".active .pool", text: @pool.name)
+end
+
+Then(/^I should see that the pool is complete$/) do
+  page.should have_css(".complete .pool", text: @pool.name)
 end

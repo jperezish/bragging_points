@@ -3,3 +3,7 @@
 <%= form_for @pool, url: update_status_pool_path(@pool, new_status: "active"), method: "put" do |f| %>
   <%= f.submit "Activate Pool" %>
 <% end %>
+
+<%= form_for @pool, url: update_status_pool_path(@pool, new_status: "complete"), method: "put" do |f| %>
+  <%= f.submit "Complete Pool" %>
+<% end %>
