@@ -1,4 +1,4 @@
-require 'pools'
+require 'pools_wrapper'
 require 'pools/status'
 
 class PoolsController < ApplicationController
@@ -6,13 +6,9 @@ class PoolsController < ApplicationController
     @pools = BraggingPoints::Pools.running_today
   end
 
-  def edit_status
-    @pool = Pool.find(pool_id)
-  end
-
   def update_status
     BraggingPoints::Pools::Status.update_to(pool_id, params[:new_status])
-    redirect_to edit_status_pool_url(pool_id)
+    redirect_to edit_pool_status_url(pool_id)
   end
 
 private

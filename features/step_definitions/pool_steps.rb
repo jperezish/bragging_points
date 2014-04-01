@@ -23,12 +23,12 @@ When(/^I go to the running pools display page$/) do
 end
 
 When(/^I go to the pool$/) do
-  visit edit_status_pool_url(@pool)
+  visit edit_pool_status_url(@pool)
   click_on "Activate Pool"
 end
 
 When(/^the pool is complete$/) do
-  visit edit_status_pool_url(@pool)
+  visit edit_pool_status_url(@pool)
   click_on "Complete Pool"
 end
 

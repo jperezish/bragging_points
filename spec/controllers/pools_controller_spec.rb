@@ -11,15 +11,6 @@ describe PoolsController do
     end
   end
 
-  describe "GET /edit_status" do
-    it "assigns the pool" do
-      pool = double
-      ::Pool.stub(:find).with("5") { pool }
-      get :edit_status, id: "5"
-      expect(assigns(:pool)).to be (pool)
-    end
-  end
-
   describe "PUT /update_status" do
     before do
       BraggingPoints::Pools::Status.stub(:update_to)
@@ -27,7 +18,7 @@ describe PoolsController do
 
     it "redirects back to the edit status page" do
       put :update_status, id: "5", new_status: "active"
-      expect(response).to redirect_to(edit_status_pool_url("5"))
+      expect(response).to redirect_to(edit_pool_status_url("5"))
     end
 
     it "updates the status of the pool" do

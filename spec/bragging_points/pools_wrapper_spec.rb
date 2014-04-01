@@ -1,5 +1,5 @@
 require 'pools/presenters/collection'
-require 'pools'
+require 'pools_wrapper'
 
 describe BraggingPoints::Pools do
   describe ".running_today" do
