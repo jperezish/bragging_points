@@ -9,4 +9,16 @@ describe "Updating the status" do
     pool.reload
     expect(pool.status).to eq("active")
   end
+
+  describe "#available_next_statuses" do
+    it "does not include the current status" do
+      pool = Pool.new status: "complete"
+      expect(pool.available_next_statuses).to_not include("complete")
+    end
+
+    it "includes the other statuses" do
+      pool = Pool.new status: "complete"
+      expect(pool.available_next_statuses).to include("not_started", "active")
+    end
+  end
 end

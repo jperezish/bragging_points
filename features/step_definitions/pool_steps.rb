@@ -24,12 +24,12 @@ end
 
 When(/^I go to the pool$/) do
   visit edit_pool_status_url(@pool)
-  click_on "Activate Pool"
+  click_on "Active"
 end
 
 When(/^the pool is complete$/) do
   visit edit_pool_status_url(@pool)
-  click_on "Complete Pool"
+  click_on "Complete"
 end
 
 Then(/^I should see that there are no pools running$/) do
