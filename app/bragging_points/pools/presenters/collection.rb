@@ -14,8 +14,14 @@ module BraggingPoints
           ["not_started", "active", "complete"]
         end
 
+        def filtered_by_status(status)
+          self.pools.select{ |p| p.status == status }
+        end
+
         def grouped_by_status(&block)
-          self.class.all_statuses.each {|status| yield status, []}
+          self.class.all_statuses.each do |status|
+            yield status, filtered_by_status(status)
+          end
         end
 
         self.all_statuses.each do |status|
@@ -25,7 +31,7 @@ module BraggingPoints
         end
 
         def in_status(status, &block)
-          self.pools.select{ |p| p.status == status }.each(&block)
+          filtered_by_status(status).each(&block)
         end
       end
     end

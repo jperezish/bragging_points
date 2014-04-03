@@ -29,6 +29,16 @@ describe BraggingPoints::Pools::Presenters::Collection do
         end
         expect(expected_statuses).to eq([])
       end
+
+      it "yields the pools associated with the statuses" do
+        yielded_pools = {}
+        presenter.grouped_by_status do |status, pools|
+          yielded_pools[status] = pools
+        end
+        expect(yielded_pools["not_started"]).to eq([not_started])
+        expect(yielded_pools["active"]).to eq([active])
+        expect(yielded_pools["complete"]).to eq([complete])
+      end
     end
   end
 end
