@@ -2,38 +2,18 @@
   There are no pools running today
 </div>
 
-<section class="pools active panel">
-  <header>
-    <h2 class="subheader">Active</h2>
-    <hr>
-  </header>
-  <ul>
-    <% @pools.active do |pool| %>
-      <li class="pool"><%= pool.name %></li>
-    <% end %>
-  </ul>
-</section>
+<% @pools.grouped_by_status do |status, pools| %>
 
-<section class="pools not_started panel">
-  <header>
-    <h2 class="subheader">Not Started</h2>
-    <hr>
-  </header>
-  <ul>
-    <% @pools.not_started do |pool| %>
-      <li class="pool"><%= pool.name %></li>
-    <% end %>
-  </ul>
-</section>
+  <section class="pools <%= status %> panel">
+    <header>
+      <h2 class="subheader"><%= status.titleize %></h2>
+      <hr>
+    </header>
+    <ul>
+      <% pools.each do |pool| %>
+        <li class="pool"><%= pool.name %></li>
+      <% end %>
+    </ul>
+  </section>
 
-<section class="pools complete panel">
-  <header>
-    <h2 class="subheader">Completed</h2>
-    <hr>
-  </header>
-  <ul>
-    <% @pools.complete do |pool| %>
-      <li class="pool"><%= pool.name %></li>
-    <% end %>
-  </ul>
-</section>
+<% end %>

@@ -19,5 +19,16 @@ describe BraggingPoints::Pools::Presenters::Collection do
     it "exposes those in the complete status" do
       expect{ |b| presenter.complete(&b) }.to yield_successive_args(complete)
     end
+
+    describe "#grouped_by_status" do
+      it "yields the possible statuses for a pool" do
+        expected_statuses = ["not_started", "active", "complete"]
+        presenter = BraggingPoints::Pools::Presenters::Collection.for([])
+        presenter.grouped_by_status do |status, _|
+          expected_statuses.delete status
+        end
+        expect(expected_statuses).to eq([])
+      end
+    end
   end
 end
