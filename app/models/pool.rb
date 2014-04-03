@@ -1,3 +1,5 @@
+require 'pools/statuses'
+
 class Pool < ActiveRecord::Base
   def self.running_today
     all
@@ -8,6 +10,6 @@ class Pool < ActiveRecord::Base
   end
 
   def available_next_statuses
-    ["not_started", "active", "complete"] - [self.status]
+    BraggingPoints::Pools::Statuses.all - [self.status]
   end
 end

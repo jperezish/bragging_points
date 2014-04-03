@@ -1,3 +1,5 @@
+require 'pools/statuses'
+
 module BraggingPoints
   module Pools
     module Presenters
@@ -11,7 +13,7 @@ module BraggingPoints
         end
 
         def self.all_statuses
-          ["not_started", "active", "complete"]
+          BraggingPoints::Pools::Statuses.all
         end
 
         def filtered_by_status(status)
