@@ -2,7 +2,7 @@ Given(/^there are no pools running today$/) do
   Pool.destroy_all
 end
 
-Given(/^there are some pools running today$/) do
+Given(/^there are some pools$/) do
   @pools = [
     Pool.create!(status: "not_started", name: "Work Survivor Pool"),
     Pool.create!(status: "not_started", name: "Family Survivor Pool"),
@@ -18,29 +18,27 @@ Given(/^a pool that is active$/) do
   @pool = Pool.create! status: "active", name: "Crazy Badger Pool"
 end
 
-When(/^I go to the running pools display page$/) do
-  visit running_today_pools_url
+When(/^I go to the pools listing page$/) do
+  visit pools_url
 end
 
-When(/^I go to the pool$/) do
-  visit edit_pool_status_url(@pool)
-  click_on "Active"
+When(/^I update the pools status to active$/) do
+  visit edit_pool_path(@pool)
+  click_button "Activate"
 end
 
-When(/^the pool is complete$/) do
-  visit edit_pool_status_url(@pool)
-  click_on "Complete"
+When(/^I update the pools status to complete$/) do
+  visit edit_pool_path(@pool)
+  click_button "Complete"
 end
 
 Then(/^I should see that there are no pools running$/) do
   page.should have_content("There are no pools running today")
 end
 
-Then(/^I should see the running pools grouped by status$/) do
+Then(/^I should see some pools$/) do
   @pools.each do |pool|
-    within(".#{pool.status}") do
-      page.should have_css(".pool", text: pool.name)
-    end
+    page.should have_css(".pool", text: pool.name)
   end
 end
 
@@ -50,4 +48,13 @@ end
 
 Then(/^I should see that the pool is complete$/) do
   page.should have_css(".complete .pool", text: @pool.name)
+end
+
+When(/^I select one of the pools$/) do
+  @pool = @pools.first
+  click_link @pool.name
+end
+
+Then(/^I should see the pools detail page$/) do
+  page.should have_css(".pool", text: @pool.name)
 end

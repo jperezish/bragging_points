@@ -1,0 +1,13 @@
+<div data-alert class="alert-box radius">
+  There are no pools running today
+</div>
+
+<div class="pools panel">
+  <% @pools.each do |pool| %>
+    <ul>
+      <li class="pool"><%= link_to pool.name, pool %></li>
+      <li class="pool"><%= pool.status %></li>
+    </ul>
+  <% end %>
+</div>
+

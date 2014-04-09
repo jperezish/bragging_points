@@ -1,7 +1,0 @@
-<h1>Edit the status for {%= @pool.name %}</h1>
-
-<% @pool.available_next_statuses.each do |status| %>
-  <%= form_for @pool, url: pool_status_path(@pool, new_status: status), method: "put" do |f| %>
-    <%= f.submit status.titleize %>
-  <% end %>
-<% end %>

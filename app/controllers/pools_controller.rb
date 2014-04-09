@@ -1,8 +1,13 @@
-require 'pools_wrapper'
-require 'pools/status'
-
 class PoolsController < ApplicationController
-  def running_today
-    @pools = BraggingPoints::Pools.running_today
+  def index
+    @pools = Pool.all
+  end
+
+  def show
+  @pool = Pool.find(params[:id])
+  end
+
+  def edit
+    
   end
 end
