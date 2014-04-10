@@ -22,16 +22,6 @@ When(/^I go to the pools listing page$/) do
   visit pools_url
 end
 
-When(/^I update the pools status to active$/) do
-  visit edit_pool_path(@pool)
-  click_button "Activate"
-end
-
-When(/^I update the pools status to complete$/) do
-  visit edit_pool_path(@pool)
-  click_button "Complete"
-end
-
 Then(/^I should see that there are no pools running$/) do
   page.should have_content("There are no pools running today")
 end
@@ -40,14 +30,6 @@ Then(/^I should see some pools$/) do
   @pools.each do |pool|
     page.should have_css(".pool", text: pool.name)
   end
-end
-
-Then(/^I should see that the pool is active$/) do
-  page.should have_css(".active .pool", text: @pool.name)
-end
-
-Then(/^I should see that the pool is complete$/) do
-  page.should have_css(".complete .pool", text: @pool.name)
 end
 
 When(/^I select one of the pools$/) do

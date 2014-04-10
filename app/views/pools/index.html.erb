@@ -1,13 +1,34 @@
-<div data-alert class="alert-box radius">
-  There are no pools running today
-</div>
+<% if @pools.empty? %>
+  <div data-alert class="alert-box radius">
+    There are no pools running today
+  </div>
+<% end %>
 
-<div class="pools panel">
   <% @pools.each do |pool| %>
-    <ul>
-      <li class="pool"><%= link_to pool.name, pool %></li>
-      <li class="pool"><%= pool.status %></li>
-    </ul>
+  <div class="pool row panel">
+    <div class="small-3 medium-2 columns">
+      <img src="http://placehold.it/130x130">
+    </div>
+    <div class="medium-2 columns hide-for-small-only" data-equalizer>
+      <div class="stat-box medium-12 columns panel" data-equalizer-watch>
+        <p class="text-center"><strong>15 </strong><i class="fi-torsos-male-female"></i><br><small>Players</small></p>
+      </div>
+      <div class="stat-box medium-12 columns panel" data-equalizer-watch>
+        <p class="text-center"><strong>30 </strong><i class="fi-crown"></i><br><small>Bragging Points</small></p>
+      </div>
+    </div>
+    <div class="small-5 medium-6 columns">
+      <div class="small-12 columns">
+        <h3><%= link_to pool.name, pool %></h3>
+        <p class="pool-stats hide-for-small-only">This pool is in week 3 of 10 with <a href="#">Joe</a> and <a href="#">Susan</a> tied for the lead.</p>
+      </div>
+      <div class="medium-12 columns hide-for-small-only">
+        <h4 class="subheader"><small>Pool Status:</small> <strong><%= pool.status %></strong></h4>
+      </div>
+    </div>
+    <div class="small-4 medium-2 columns">
+      <a href="#" class="small button success round">Manage</a>
+    </div>
+  </div>
   <% end %>
-</div>
 
