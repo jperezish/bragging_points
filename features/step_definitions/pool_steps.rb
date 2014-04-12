@@ -38,5 +38,5 @@ When(/^I select one of the pools$/) do
 end
 
 Then(/^I should see the pools detail page$/) do
-  page.should have_css(".pool", text: @pool.name)
+  page.should have_css(".pool-name", text: @pool.name)
 end
