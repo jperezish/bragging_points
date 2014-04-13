@@ -17,5 +17,6 @@
 
 <nav>
   <%= link_to "All Pools", pools_path %> |
-  <%= link_to "Edit", edit_pool_path(@pool) %>
+  <%= link_to "Edit", edit_pool_path(@pool) %> |
+  <%= link_to"Delete", pool_path(@pool), method: :delete, data: { confirm: "Are you sure?" } %>
 </nav>

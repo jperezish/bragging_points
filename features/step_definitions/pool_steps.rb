@@ -72,9 +72,9 @@ When(/^I enter some updated information$/) do
 end
 
 When(/^I choose to delete an existing pool$/) do
-  click_link "Delete Pool"
+  click_link "Delete"
 end
 
 Then(/^I should not see the pool on pool index page$/) do
-  page.should not_have_content("Crazy Badger Pool")
+  page.should_not have_content("Crazy Badger Pool")
 end

@@ -27,6 +27,12 @@ class PoolsController < ApplicationController
     redirect_to @pool
   end
 
+  def destroy
+    @pool = Pool.find(params[:id])
+    @pool.destroy
+    redirect_to pools_url
+  end
+
 private
 
   def pool_params
