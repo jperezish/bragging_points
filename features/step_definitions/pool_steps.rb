@@ -40,3 +40,41 @@ end
 Then(/^I should see the pools detail page$/) do
   page.should have_css(".pool-name", text: @pool.name)
 end
+
+When(/^I choose to create a new pool$/) do
+  visit root_url
+  click_link "Create New Pool"
+end
+
+When(/^I enter the required information$/) do
+  fill_in "Name", with: "Awesome Pool!"
+  fill_in "Status", with: "not started"
+  click_button "Create Pool"
+end
+
+Then(/^I should see the pool on the pool detail page$/) do
+  page.should have_content("Awesome Pool!")
+end
+
+When(/^I view the details of an existing pool$/) do
+  @pool = Pool.create! status: "not started", name: "Crazy Badger Pool"
+  visit root_url
+  click_link "Crazy Badger Pool"
+end
+
+When(/^I choose to edit an existing pool$/) do
+  click_link "Edit"
+end
+
+When(/^I enter some updated information$/) do
+  fill_in "Name", with: "Awesome Pool!"
+  click_button "Update Pool"
+end
+
+When(/^I choose to delete an existing pool$/) do
+  click_link "Delete Pool"
+end
+
+Then(/^I should not see the pool on pool index page$/) do
+  page.should not_have_content("Crazy Badger Pool")
+end
