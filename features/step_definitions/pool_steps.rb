@@ -49,6 +49,7 @@ end
 When(/^I enter the required information$/) do
   fill_in "Name", with: "Awesome Pool!"
   fill_in "Status", with: "not started"
+  fill_in "Bragging Points", with: "25"
   click_button "Create Pool"
 end
 
