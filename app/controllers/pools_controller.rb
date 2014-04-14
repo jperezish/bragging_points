@@ -36,6 +36,6 @@ class PoolsController < ApplicationController
 private
 
   def pool_params
-    params.require(:pool).permit(:name, :status)
+    params.require(:pool).permit(:name, :status, :bragging_points)
   end
 end

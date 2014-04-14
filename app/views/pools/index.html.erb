@@ -14,7 +14,7 @@
         <p class="text-center"><strong>15 </strong><i class="fi-torsos-male-female"></i><br><small>Players</small></p>
       </div>
       <div class="stat-box medium-12 columns panel" data-equalizer-watch>
-        <p class="text-center"><strong>30 </strong><i class="fi-crown"></i><br><small>Bragging Points</small></p>
+        <p class="text-center"><strong><%= number_with_precision(pool.bragging_points, precision: 0, delimiter: ",") %> </strong><i class="fi-crown"></i><br><small>Bragging Points</small></p>
       </div>
     </div>
     <div class="small-5 medium-6 columns">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="small-4 medium-2 columns">
-      <a href="#" class="small button success round">Manage</a>
+      <%= link_to "Manage", pool, class: "small button success round" %>
     </div>
   </div>
   <% end %>
