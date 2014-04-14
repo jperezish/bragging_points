@@ -10,6 +10,14 @@ Given(/^there are some pools$/) do
   ]
 end
 
+Given(/^a pool with 0 bragging points$/) do
+  @pools = [
+    Pool.create!(status: "not_started",
+                 name: "Work Survivor Pool",
+                 bragging_points: 0)
+  ]
+end
+
 Given(/^a pool that has not started$/) do
   @pool = Pool.create! status: "not_started", name: "Awesome Friends Survivor Pool"
 end
@@ -32,8 +40,8 @@ Then(/^I should see some pools$/) do
   end
 end
 
-When(/^I select one of the pools$/) do
-  @pool = @pools.first
+When(/^I select a pool$/) do
+  @pool = Pool.find_by(name: "Work Survivor Pool")
   click_link @pool.name
 end
 
@@ -79,3 +87,8 @@ end
 Then(/^I should not see the pool on pool index page$/) do
   page.should_not have_content("Crazy Badger Pool")
 end
+
+Then(/^I should see that there are no bragging points$/) do
+  page.should have_css(".bragging_points", text: "No")
+end
+

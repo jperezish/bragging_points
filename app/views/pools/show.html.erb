@@ -6,8 +6,8 @@
     <li><strong>End date:</strong> December 24, 2014</li>
   </ul>
 </div>
-<div class="panel">
-  <h3><%= number_with_precision(@pool.bragging_points, precision: 0, delimiter: ",") %></h3>
+<div class="bragging_points panel">
+  <h3><%= format_bragging_points(@pool) %></h3>
   <h4>Bragging Points</h4>
 </div>
 <div class="panel">

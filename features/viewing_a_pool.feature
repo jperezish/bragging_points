@@ -13,5 +13,11 @@ Feature: Viewing a pool
   Scenario: Viewing the details of a pool
     Given there are some pools
     When I go to the pools listing page
-    When I select one of the pools
+    And I select a pool
     Then I should see the pools detail page
+
+  Scenario: Viewing a pool with 0 bragging points
+    Given a pool with 0 bragging points
+    When I go to the pools listing page
+    And I select a pool
+    Then I should see that there are no bragging points
