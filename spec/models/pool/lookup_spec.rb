@@ -10,8 +10,8 @@ describe "Looking up pools" do
       end
 
       it "returns all of the pools in the system" do
-        active = Pool.create! name: "Awesome Friends Pool", status: "active"
-        not_started = Pool.create! name: "Destroy All Coworkers", status: "not_started"
+        active = Pool.create! name: "Awesome Friends Pool", status: "active", bragging_points: 5, status: "not started"
+        not_started = Pool.create! name: "Destroy All Coworkers", status: "not_started", bragging_points: 5, status: "not started"
         expect(Pool.running_today).to eq([active, not_started])
       end
     end
